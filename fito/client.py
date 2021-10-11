@@ -14,14 +14,10 @@ from argusmain.settings import BASE_DIR
 
 session = Session()
 session.verify = True
-session.proxies = {
-    'http': 'http://192.168.145.2:3128',
-    'https': 'https://192.168.145.2:3128'
-}
+# you can use any proxy if u want
 certificates_folder = os.path.join(BASE_DIR, 'certificates')
 session.cert = (
-    os.path.join(certificates_folder, 'karantin_public_key.pem'),
-    os.path.join(certificates_folder, 'karantin_private_key.pem')
+ # you can use public and private keys
 )
 transport = Transport(session=session)
 history = HistoryPlugin()
@@ -41,8 +37,8 @@ class Corrector(Plugin):
     #     return envelope, http_headers
 
 
-wsdl_url = 'https://hub.ephytoexchange.org/hub/DeliveryService?wsdl'
-# wsdl_url = 'https://uat-hub.ephytoexchange.org/hub/DeliveryService?wsdl'
+wsdl_url = 'service link  ' # you have to add service link for send POST request
+
 settings = Settings(strict=False, xml_huge_tree=True)
 session = Session()
 client = Client(
